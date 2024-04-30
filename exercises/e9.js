@@ -38,12 +38,8 @@ export function alwaysThrows() {
  */
 
 export function onReject(arg) {
-  if (typeof arg === 'object' && arg instanceof Error) {
-    console.log(arg.message);
-  } else {
-    console.log(arg);
-  }
-
+  const valueToLog = arg.message || arg;
+  console.log(valueToLog);
 }
 
 /**
@@ -74,7 +70,6 @@ export const promise = Promise.resolve(iterate(1))
   .then(iterate)
   .then(iterate)
   .then(() => alwaysThrows())
-  .then(iterate)
   .then(iterate)
   .then(iterate)
   .then(iterate)

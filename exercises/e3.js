@@ -39,12 +39,10 @@ export const getPromise = (num) => {
  */
 export const updateSumValue = () => {
   const sum = 2;
-  const solvedPromise = new Promise((resolve,) => {
-    resolve(getPromise(120));
-
-  })
-  solvedPromise.then((data) => console.log(data));
+  getPromise(120).then((val) => (sum + val));
   return sum + 8;
+
+
 }
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"

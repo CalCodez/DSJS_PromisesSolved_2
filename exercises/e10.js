@@ -10,20 +10,14 @@ export const getFirstPromiseOrFail = (promises) => {
 export const getQuantityOfRejectedPromises = (promises) => {
   return Promise.allSettled(promises)
     .then((results) => {
-      const rejectedCount = results.filter((result) => result.status === `rejected`).length;
-      return rejectedCount;
+      return results.filter((result) => result.status === `rejected`).length;
     });
 };
 
 export const getQuantityOfFulfilledPromises = (promises) => {
   return Promise.allSettled(promises)
-    .then(results => {
-      return results.reduce((count, result) => {
-        if (result.status === `fulfilled`) {
-          count++;
-        }
-        return count;
-      }, 0);
+    .then((results) => {
+      return results.filter((result) => result.status === `fulfilled`).length;
     });
 };
 
@@ -60,10 +54,7 @@ export const fetchAllCharactersByIds = async (ids) => {
   //*  write code to pass test ⬇ ️
 
   const promises = ids.map(id => fetchCharacterById(id));
-  try {
-    const characters = await Promise.all(promises);
-    return characters;
-  } catch (error) {
-    return [];
-  }
+  return Promise.all(promises)
+    .then((res) => res)
+    .catch(() => []);
 };

@@ -38,7 +38,7 @@ export const getPromise = (bool) => {
 export const handlePromise = (promise) => {
   // Your code goes here...
   return Promise.resolve(promise)
-    .catch(() => "Uh Oh");
+    .then((value) => value, () => "Uh Oh");
 
 };
 

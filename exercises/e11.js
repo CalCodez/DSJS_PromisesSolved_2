@@ -38,15 +38,7 @@ const getLoginList = (data) => {
 */
 
 // Your code goes here ...
-const getData = (userUrl) => {
-  return fetch(userUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Network response was no ok`);
-      }
-      return response.json();
-    });
-};
+const getData = fetch(usersUrl);
 
 /**
  * @task
@@ -60,15 +52,15 @@ const getData = (userUrl) => {
 */
 
 // Your code goes here ...
-export const result = getData(usersUrl)
+export const result = getData
+  .then((res) => res.json())
   .then(data => {
     const userLogin = getLoginList(data);
     console.log(userLogin);
     return Promise.resolve(userLogin);
-  })
-  .catch(error => {
-    console.error(`An error occurred:`, error);
   });
+
+
 
 
 // === TEST YOURSELF ===
