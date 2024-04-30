@@ -14,8 +14,16 @@
  * * getPromise(num) function must be exported
  * Example: export const getPromise(num) => return <Your code of promise>
  */
-export const getPromise = () => {
+export const getPromise = (num) => {
   // Your code goes here...
+  if (Number.isInteger(num) && !isNaN(num)) {
+    return Promise.resolve(num);
+  } else {
+    return 0;
+  }
+
+
+
 };
 
 /**
@@ -30,9 +38,14 @@ export const getPromise = () => {
  * * if you have solved it successfully, the updateSumValue() function will return the value of 10;
  */
 export const updateSumValue = () => {
-  // Your code goes here...
-};
+  const sum = 2;
+  const solvedPromise = new Promise((resolve,) => {
+    resolve(getPromise(120));
 
+  })
+  solvedPromise.then((data) => console.log(data));
+  return sum + 8;
+}
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"
 // If the test has all tests passed, switch to the next exercise file
